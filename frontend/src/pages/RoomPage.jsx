@@ -55,21 +55,19 @@ function RoomPage() {
 
     // Clear input field
     setMessage('');
-
-    // Optionally, send the message to the backend
-    if (!isAskAI) {
-      await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/rooms/${roomId}/messages`,
-        newMessage
-      );
-    }
   };
 
-  // Function to simulate AI response (for now, this is a simple example)
   const getAIResponse = async (question) => {
-    // Here, you would call your AI service, e.g., via an API
-    // For now, we're just simulating a response
-    return `AI Response: I heard you asked, "${question}"`;
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/ask-ai`,
+        { message: question }
+      );
+      return response.data.answer || 'Sorry, I could not answer that.';
+    } catch (error) {
+      console.error('Error fetching AI response:', error);
+      return 'An error occurred while fetching the AI response.';
+    }
   };
 
   return (
