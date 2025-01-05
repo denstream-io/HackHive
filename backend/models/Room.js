@@ -27,6 +27,12 @@ const roomSchema = new mongoose.Schema({
       ref: 'User', // Reference to the User model
     },
   ],
+  messages: [
+    {
+      type: mongoose.Schema.Types.ObjectId, // Message's ID
+      ref: 'Message', // Reference to the Message model
+    },
+  ],
   createdAt: {
     type: Date,
     default: Date.now, // Sets the default creation date to the current time

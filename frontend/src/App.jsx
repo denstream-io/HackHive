@@ -8,6 +8,7 @@ import useUserStore from '../stores/useUserStore';
 import Teams from './pages/Teams';
 import Search from './pages/Search';
 import { Toaster } from 'react-hot-toast';
+import RoomPage from './pages/RoomPage';
 
 function App() {
   const { user, setUser } = useUserStore();
@@ -54,6 +55,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/search" element={<Search />} />
           <Route path="/teams" element={<Teams />} />
+          <Route path="/rooms/:roomId" element={<RoomPage />} />
         </Routes>
       </div>
       <Toaster />

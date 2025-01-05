@@ -3,11 +3,13 @@ import useUserStore from '../../stores/useUserStore';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { AiFillStar, AiOutlineStar, AiOutlineTeam } from 'react-icons/ai';
+import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
   const { user, githubData: data } = useUserStore();
   const [stars, setStars] = useState(0);
   const [teams, setTeams] = useState([]);
+  const navigate = useNavigate(); // Add the useNavigate hook
 
   useEffect(() => {
     async function fetchData() {
@@ -53,6 +55,11 @@ const Dashboard = () => {
     return stars;
   };
 
+  const handleEnterTeam = (roomId) => {
+    // Navigate to the specific team room using the roomId
+    navigate(`/rooms/${roomId}`);
+  };
+
   return (
     <div className="text-white z-20 flex flex-col items-center justify-center mt-14 max-w-4xl mx-auto w-full">
       <div className="flex gap-4 justify-start w-full">
@@ -94,7 +101,7 @@ const Dashboard = () => {
                 </h3>
                 <button
                   className="bg-yellow-400 text-black py-2 px-4 rounded-md mt-auto hover:bg-yellow-500 transition-colors duration-200"
-                  onClick={() => console.log(`Enter team ${team.name}`)}
+                  onClick={() => handleEnterTeam(team._id)} // Pass team ID to navigate
                 >
                   Enter Team
                 </button>
