@@ -56,7 +56,7 @@ function Search() {
           />
         </div>
       </div>
-      <div className="mt-8 w-full max-w-3xl z-20 flex flex-col items-center justify-center gap-1">
+      <div className="mt-8 w-full max-w-2xl z-20 flex flex-col items-center justify-center gap-1">
         {filteredUsers.map((user) => (
           <div
             key={user._id}

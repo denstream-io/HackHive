@@ -9,7 +9,7 @@ const calculateNumericRating = (user) => {
     pullRequests: 0.2, // Lowered from 0.25
     starsReceived: 0.2, // Retained as is
     followers: 0.15, // Increased slightly from 0.1
-    publicRepos: 0.1, // Increased slightly from 0.05
+    publicRepos: 0.6, // Increased slightly from 0.05
   };
 
   // Calculate weighted sum
