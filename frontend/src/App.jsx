@@ -7,6 +7,7 @@ import Home from './pages/Home'; // Home page where the login and features will 
 import useUserStore from '../stores/useUserStore';
 import Teams from './pages/Teams';
 import Search from './pages/Search';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   const { user, setUser } = useUserStore();
@@ -55,6 +56,7 @@ function App() {
           <Route path="/teams" element={<Teams />} />
         </Routes>
       </div>
+      <Toaster />
     </Router>
   );
 }

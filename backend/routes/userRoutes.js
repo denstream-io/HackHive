@@ -13,6 +13,19 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Get a single user by GitHub ID
+router.get('/:githubID', async (req, res) => {
+  try {
+    const user = await User.findOne({ githubID: req.params.githubID }); // Find user by GitHub ID
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' }); // Handle non-existent user
+    }
+    res.json(user); // Respond with user data
+  } catch (err) {
+    res.status(500).json({ message: 'Server Error', error: err.message });
+  }
+});
+
 // Route to update a single user's star rating
 router.post('/update-rating', async (req, res) => {
   try {
